@@ -1,50 +1,31 @@
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text } from 'react-native'
+import React from 'react'
+
+// Navigation 
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+// Screeens 
+import Home from './src/screens/Home'
+import Details from './src/screens/Details'
+
+export type RootStackParamList = {
+  Home: undefined;
+  Details: { link: string}
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const App = () => {
-  const [message, setMessage] = useState('')
-  const handlePress = () => {
-    setMessage("Am I cute ?")
-  };
   return (
-    <View style={styles.body}>
-      <Text style={styles.textStyle}>Hello Everyone</Text>
-      <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Image 
-        style={styles.imageSize} 
-        source={{uri:'https://fullbloomclub.net/wp-content/uploads/2023/07/cute-easy-drawing4.jpg'}}/>
-      </TouchableOpacity>
-      <Text style={{marginTop:30, fontSize:20, color:'gray'}}>{message}</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+    <Stack.Screen name='Home' component={Home} options={{ title:"Langing Page"}}/>
+    <Stack.Screen name='Details' component={Details} options={{title:"Details Page"}} />
+    
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  body:{
-    backgroundColor: 'white',
-    height:"100%",
-    justifyContent:'center',
-    alignItems: 'center',
-  },
-  textStyle:{
-    fontSize: 30,
-    fontWeight:"600",
-    marginBottom:10
-  },
-  button:{
-    backgroundColor: "gray",
-    padding: 15,
-    borderRadius: 25,
-    
-  },
-  buttoTextStyle:{
-    color: 'white',
-    fontWeight:'900'
-  },
-  imageSize:{
-    width:300,
-    height:300
-  }
-})
