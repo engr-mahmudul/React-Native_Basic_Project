@@ -1,10 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Home = () => {
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App'
+
+type HomeProps = NativeStackScreenProps<RootStackParamList,'Home'>
+
+const Home = ({navigation}:HomeProps) => {
+    const imageLink = 'https://fullbloomclub.net/wp-content/uploads/2023/07/cute-easy-drawing4.jpg'
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={styles.container}>
+      <Text style={styles.smallText}>Home</Text>
+      <Pressable 
+      style={styles.buttonStyle} 
+      onPress={()=>navigation.navigate('Details',{link:imageLink})}
+      >
+        <Text> Go to Details page</Text>
+      </Pressable>
     </View>
   )
 }
@@ -19,5 +31,10 @@ const styles = StyleSheet.create({
     },
     smallText:{
         color:'black'
+    },
+    buttonStyle:{
+        backgroundColor:'gray',
+        padding:10,
+        borderRadius:20
     }
 })

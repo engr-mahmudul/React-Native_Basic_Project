@@ -16,13 +16,12 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-    <Stack.Screen name='Home' component={Home} options={{ title:"Langing Page"}}/>
-    <Stack.Screen name='Details' component={Details} options={{title:"Details Page"}} />
-    
+        <Stack.Screen name='Home' component={Home} options={{ title:"Langing Page"}}/>
+        <Stack.Screen name='Details' component={Details} options={{title:"Details Page"}} />
       </Stack.Navigator>
     </NavigationContainer>
   )

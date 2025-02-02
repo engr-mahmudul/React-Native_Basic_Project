@@ -1,7 +1,14 @@
 import {  Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
-const Details = () => {
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '../../App'
+
+
+type DetailsProps = NativeStackScreenProps<RootStackParamList, 'Details'>
+
+const Details = ({route}:DetailsProps) => {
+    const {link} = route.params
   const [message, setMessage] = useState('')
   const handlePress = () => {
     setMessage("Am I cute ?")
@@ -12,7 +19,7 @@ const Details = () => {
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Image 
         style={styles.imageSize} 
-        source={{uri:'https://fullbloomclub.net/wp-content/uploads/2023/07/cute-easy-drawing4.jpg'}}/>
+        source={{uri:link}}/>
       </TouchableOpacity>
       <Text style={{marginTop:30, fontSize:20, color:'gray'}}>{message}</Text>
     </View>
