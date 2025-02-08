@@ -17,6 +17,12 @@ const Home = ({navigation}:HomeProps) => {
       >
         <Text> Go to Details page</Text>
       </Pressable>
+      <Pressable 
+      style={styles.buttonStyle} 
+      onPress={()=>navigation.navigate('StyleGround')}
+      >
+        <Text> Go to Style Ground Page</Text>
+      </Pressable>
     </View>
   )
 }
@@ -35,6 +41,7 @@ const styles = StyleSheet.create({
     buttonStyle:{
         backgroundColor:'gray',
         padding:10,
-        borderRadius:20
+        borderRadius:20,
+        marginVertical:20
     }
 })
