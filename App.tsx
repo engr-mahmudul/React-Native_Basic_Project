@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-// Navigation 
+// Navigation color
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -21,9 +21,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 const App = (): JSX.Element => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={Home} options={{ title:"Langing Page"}}/>
-        <Stack.Screen name='Details' component={Details} options={{title:"Details Page"}} />
+      <Stack.Navigator initialRouteName='Home' screenOptions={{
+           headerStyle: { backgroundColor: 'green' }, 
+           headerTintColor: 'white',
+      }}>
+        <Stack.Screen name='Home' component={Home} options={{headerShown:false}}/>
+        <Stack.Screen name='Details' component={Details} 
+        options={{
+          title: "Details Page",
+          headerStyle: { backgroundColor: "blue" }, // Overriding background color
+          headerTintColor: "white", // Explicitly setting text and icon color
+        }}
+        />
         <Stack.Screen name='StyleGround' component={StyleGround} options={{title:"Style Ground Page"}} />
       </Stack.Navigator>
     </NavigationContainer>
